@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "dependencies": {
+    "babel": "^6.5.2",
+    "classnames": "^2.1.5",
+    "director": "^1.2.0",
+    "isomorphic-fetch": "~2.1.1",
+    "react": "^0.13.3",
+    "require": "^2.4.20",
+    "todomvc-app-css": "^2.0.0",
+    "todomvc-common": "^1.0.1"
+  }
+}
