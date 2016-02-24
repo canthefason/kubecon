@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react'
-import classnames from 'classnames'
 
 const Link = ({ active, children, onClick }) => {
   if (active) {

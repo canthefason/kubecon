@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addTodo } from '../actions'
+import { postTodo } from '../actions'
+
 
 let AddTodo = ({ dispatch }) => {
   let input
@@ -13,7 +14,7 @@ let AddTodo = ({ dispatch }) => {
         if (!input.value.trim()) {
           return
         }
-        dispatch(addTodo(input.value))
+        dispatch(postTodo(input.value))
         input.value = ''
       }}>
         <input className="new-todo" placeholder="Things to do..." ref={node => {
@@ -23,6 +24,7 @@ let AddTodo = ({ dispatch }) => {
     </header>
   )
 }
+
 AddTodo = connect()(AddTodo)
 
 export default AddTodo

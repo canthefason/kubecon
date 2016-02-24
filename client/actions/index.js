@@ -1,9 +1,11 @@
+import * as api from './actionHelpers.js'
+
 let nextTodoId = 0
-export const addTodo = (text) => {
+export const addTodo = (todo) => {
   return {
     type: 'ADD_TODO',
-    id: nextTodoId++,
-    text
+    // id: nextTodoId++,
+    todo
   }
 }
 
@@ -14,9 +16,40 @@ export const setVisibilityFilter = (filter) => {
   }
 }
 
-export const toggleTodo = (id) => {
+export const toggleTodo = (todo, index) => {
   return {
     type: 'TOGGLE_TODO',
-    id
+    todo, 
+    index
+  }
+}
+
+export const toggleTodoAPI = (id, index) => {
+ return function (dispatch){
+    return dispatch(
+      api.toggle(id, index)
+    )
+  }
+}
+
+export function getTodos() {
+  return function (dispatch){
+    return dispatch(
+      api.getTodos()
+    )
+  }
+}
+export const populate = (todos) => {
+  return {
+    type: 'GET_TODOS',
+    todos
+  }
+}
+
+export function postTodo(todo) {
+  return function (dispatch){
+    return dispatch(
+      api.postTodo(todo)
+    )
   }
 }
