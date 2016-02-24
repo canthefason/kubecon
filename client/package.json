@@ -1,21 +1,12 @@
 {
-  "name": "redux-todos-example",
+  "name": "Kubecon client",
   "version": "0.0.0",
-  "description": "Redux Todos example",
+  "description": "simple todolist app for kubecon",
   "scripts": {
     "start": "node server.js",
     "test": "cross-env NODE_ENV=test mocha --recursive --compilers js:babel-register --require ./test/setup.js",
     "test:watch": "npm test -- --watch"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/reactjs/redux.git"
-  },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/reactjs/redux/issues"
-  },
-  "homepage": "http://redux.js.org",
   "dependencies": {
     "babel-polyfill": "^6.3.14",
     "classnames": "^2.2.3",

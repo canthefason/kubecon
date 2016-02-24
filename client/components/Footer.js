@@ -19,4 +19,3 @@ const Footer = () => (
 )
 
 export default Footer
-// className={classNames({selected: nowShowing === app.ALL_TODOS})}
