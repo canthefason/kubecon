@@ -16,7 +16,7 @@ import Todo from './Todo'
 // )
 class TodoList extends Component {
   componentDidMount(){
-    this.props.onLoad()  
+    this.props.onLoad()
   }
   render(){
     const {todos,onTodoClick} = this.props
@@ -35,13 +35,13 @@ class TodoList extends Component {
     )
 
   }
-} 
+}
 
 TodoList.propTypes = {
   todos: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     completed: PropTypes.bool.isRequired,
-    text: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired
   }).isRequired).isRequired,
   onTodoClick: PropTypes.func.isRequired
 }

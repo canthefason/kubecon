@@ -22,6 +22,7 @@ func UpdateHandler(w rest.ResponseWriter, r *rest.Request) {
 	}
 
 	w.WriteHeader(http.StatusOK)
+	w.WriteJson(t)
 }
 
 func GetHandler(w rest.ResponseWriter, r *rest.Request) {

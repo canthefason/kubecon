@@ -35,7 +35,7 @@ func (ms *MongoService) Upsert(t *Todo) error {
 }
 
 func (ms *MongoService) Get() ([]Todo, error) {
-	var todos []Todo
+	todos := make([]Todo, 0)
 	err := ms.Find(bson.M{}).All(&todos)
 	if err == mgo.ErrNotFound {
 		return todos, ErrNotFound

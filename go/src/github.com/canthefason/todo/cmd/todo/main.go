@@ -38,6 +38,7 @@ func loadConfig() Config {
 	var c Config
 	flag.StringVar(&c.MongoUrl, "mongo-url", "192.168.99.100:27017/kubecon", "Mongo connection url")
 	flag.StringVar(&c.MongoName, "mongo-dbname", "kubecon", "MondoDB database name")
+	flag.Parse()
 
 	return c
 }
@@ -64,8 +65,8 @@ func main() {
 	})
 
 	router, err := rest.MakeRouter(
-		rest.Post("/todo", todo.UpdateHandler),
-		rest.Get("/todo", todo.GetHandler),
+		rest.Post("/", todo.UpdateHandler),
+		rest.Get("/", todo.GetHandler),
 	)
 	if err != nil {
 		panic(err)

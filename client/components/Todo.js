@@ -1,13 +1,13 @@
 import React, { PropTypes } from 'react'
 import classnames from 'classnames'
 
-const Todo = ({ onClick, completed, text }) => (
+const Todo = ({ onClick, completed, title }) => (
   <li className={classnames({completed: completed})}>
   <div className="view"
     onClick={onClick}
 
   >
-    {text}
+    {title}
     </div>
   </li>
 )
@@ -15,7 +15,7 @@ const Todo = ({ onClick, completed, text }) => (
 Todo.propTypes = {
   onClick: PropTypes.func.isRequired,
   completed: PropTypes.bool.isRequired,
-  text: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired
 }
 
 export default Todo
