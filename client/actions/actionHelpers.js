@@ -60,6 +60,7 @@ export function postTodo(todo) {
      return response.json();
    }).then(
      resp => {
+      debugger
        dispatch(addTodo(resp))
      },
      error => alert(error)

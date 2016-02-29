@@ -20,6 +20,7 @@ app.get('/', function(req, res) {
   res.sendFile(__dirname + '/index.html')
 })
 
+
 app.post('/todo', function(req, res) {
   fs.readFile('todos.txt', 'utf8', function(err, data){
     if (err) console.log(err)
@@ -59,6 +60,8 @@ app.put('/todo', function(req, res) {
     })
   })
 })
+
+
 app.listen(port, function(error) {
   if (error) {
     console.error(error)

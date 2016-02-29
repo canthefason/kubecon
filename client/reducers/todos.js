@@ -22,9 +22,10 @@ const todo = (state, action) => {
 const todos = (state = [], action) => {
   switch (action.type) {
     case 'ADD_TODO':
+    debugger
       return [
         ...state,
-        action.todo
+        action.todo.body
       ]
     case 'TOGGLE_TODO':
       let newState = state.slice()
