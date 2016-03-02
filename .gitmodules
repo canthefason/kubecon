@@ -1,0 +1,3 @@
+[submodule "go/src/github.com/canthefason/todo"]
+	path = go/src/github.com/canthefason/todo
+	url = git@github.com:canthefason/todo.git
