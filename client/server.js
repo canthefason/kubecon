@@ -21,6 +21,7 @@ app.get('/', function(req, res) {
 })
 
 app.post('/todo', function(req, res) {
+
   fs.readFile('todos.txt', 'utf8', function(err, data){
     if (err) console.log(err)
     if (data.length > 0) {
