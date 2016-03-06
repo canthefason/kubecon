@@ -59,7 +59,7 @@ app.put('/todo', function(req, res) {
   })
 })
 app.post('/signin', function(req, res) {
-  res.redirect('/')
+  res.redirect('/app')
 })
 
 app.get('*', function(req, res) {

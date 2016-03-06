@@ -19,7 +19,7 @@ const todos = (state = [], action) => {
     case 'ADD_TODO':
       return [
         ...state,
-        action.todo.body
+        action.todo
       ]
     case 'TOGGLE_TODO':
       let newState = state.slice()
