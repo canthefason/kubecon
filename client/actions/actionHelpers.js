@@ -60,7 +60,7 @@ export function postTodo(todo) {
      return response.json();
    }).then(
      resp => {
-       dispatch(addTodo(resp))
+       dispatch(addTodo(resp.body))
      },
      error => alert(error)
    );
@@ -69,7 +69,7 @@ export function postTodo(todo) {
 export function toggle(todo, index) {
   todo.completed = !todo.completed
  return function (dispatch) {
-   return fetch('/todo/', getOptions('POST', todo)).then(function(response){
+   return fetch('/todo/', getOptions('PUT', todo)).then(function(response){
 
      if(response.status >=400){
        throw new Error ("bad response from server");
