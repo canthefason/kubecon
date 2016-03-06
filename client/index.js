@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import Immutable from 'immutable'
-import { Router, Route, browserHistory } from 'react-router'
+import { Router, Route, browserHistory, IndexRoute } from 'react-router'
 
 import { syncHistoryWithStore, routerMiddleware} from 'react-router-redux'
 
@@ -35,11 +35,12 @@ const history = syncHistoryWithStore(browserHistory, store)
 render(
   <Provider store={store}>
     <Router history={history}>
-      <Route component={AppContainer}>
-        <Route path="app" component={App}/>
-        <Route path="*" component={Login}/>
+      <Route path='/' component={AppContainer}>
+        <IndexRoute component={App} />
+        <Route path="signin" component={Login}/>
       </Route>
     </Router>
   </Provider>,
   document.getElementById('root')
 )
+        // <Route path="app" component={App}/>
