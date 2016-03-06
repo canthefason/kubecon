@@ -4,3 +4,6 @@
 [submodule "integration-tests"]
 	path = integration-tests
 	url = git@github.com:qhenkart/kubecon-integration-tests.git
+[submodule "client"]
+	path = client
+	url = git@github.com:canthefason/kubecon-ui.git
