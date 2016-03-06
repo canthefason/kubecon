@@ -1,3 +1,7 @@
 [submodule "go/src/github.com/canthefason/todo"]
-	path = go/src/github.com/canthefason/todo
-	url = git@github.com:canthefason/todo.git
+  path = go/src/github.com/canthefason/todo
+  url = git@github.com:canthefason/todo.git
+
+[submodule "integration-tests"]
+	path = integration-tests
+	url = git@github.com:qhenkart/kubecon-integration-tests.git
