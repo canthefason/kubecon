@@ -60,7 +60,7 @@ export function postTodo(todo) {
      return response.json();
    }).then(
      resp => {
-       dispatch(addTodo(resp))
+       dispatch(addTodo(resp.body))
      },
      error => alert(error)
    );
