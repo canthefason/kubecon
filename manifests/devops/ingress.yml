@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: devops
+  namespace: devops
+spec:
+  rules:
+  - host: devops.kubecon.launchpadcentral.com
+    http:
+      paths:
+      - path: /go
+        backend:
+          serviceName: gocd-server
+          servicePort: 8153

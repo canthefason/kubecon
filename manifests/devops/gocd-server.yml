@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: gocd-server
+  namespace: devops
+spec:
+  replicas: 1
+  selector:
+    app: gocd-server
+  template:
+    metadata:
+      name: gocd-server
+      labels:
+        app: gocd-server
+    spec:
+      volumes:
+        - name: cruise-config
+          awsElasticBlockStore:
+            volumeID: ${VOLUME_ID}
+            fsType: ext4
+        - name: go-server
+          awsElasticBlockStore:
+            volumeID: ${VOLUME_ID}
+            fsType: ext4
+        - name: git-ssh
+          secret:
+            secretName: gocd-agent-ssh
+      containers:
+        - name: gocd-server
+          image: gocd/gocd-server:16.2.1
+          env:
+            - name: SERVER_MEM
+              value: 1024m
+            - name: SERVER_MAX_MEM
+              value: 2048m
+            - name: SERVER_MAX_PERM_GEN
+              value: 256m
+            - name: SERVER_MIN_PERM_GEN
+              value: 512m
+          ports:
+            - containerPort: 8153
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "2048Mi"
+              cpu: "500m"
+          volumeMounts:
+            - name: cruise-config
+              readOnly: false
+              mountPath: /etc/go
+            - name: go-server
+              readOnly: false
+              mountPath: /var/lib/go-server
+            - name: git-ssh
+              readOnly: true
+              mountPath: /go/ssh
