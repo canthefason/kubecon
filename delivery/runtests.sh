@@ -18,7 +18,8 @@ echo "Test started using $E2E_IMAGE_TAG tag"
 
 #kubectl run -i -tty nightwatch --env=PAUSE=${E2E_PAUSE} --env=MONGOADDR=mongo --env=URL=http://nginx --image=launchpadcentral/e2e:${E2E_IMAGE_TAG} --restart=Never --overrides='{"apiVersion":"v1","kind":"Pod","spec":{"imagePullSecrets":[{"name":"docker-secret"}]}}' $kubeargs
 
-kubectl run -i -tty nightwatch --env=PAUSE=${E2E_PAUSE} --env=URL=http://nginx --image=canthefason/integration-tests:${E2E_IMAGE_TAG} --overrides='{"apiVersion":"v1","kind":"Pod"}' --restart=Never $kubeargs
+kubectl run -i -tty nightwatch --env=PAUSE=3000 --env=URL=http://nginx --image=canthefason/integration-tests:${E2E_IMAGE_TAG} --overrides='{"apiVersion":"v1","kind":"Pod"}' --restart=Never $kubeargs
+
 
 state=$(kubectl get -o template po nightwatch $kubeargs --template={{.status.phase}})
 while [ "$state" == "Running" ]; do
