@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: todo-service
+spec:
+  replicas: 2
+  selector:
+    app: todo-service
+  template:
+    metadata:
+      name: todo-service
+      labels:
+        app: todo-service
+    spec:
+      containers:
+        - name: todo-service
+          image: canthefason/todo-service:${BUILD_TAG}
+          command:
+            - ./todo-service
+            - -mongo-url
+            - mongo:27017/kubecon
+          readinessProbe:
+            httpGet:
+              path: /ping
+              port: 8000
+            initialDelaySeconds: 15
+            timeoutSeconds: 1
+          ports:
+            - containerPort: 8000
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "64Mi"
+              cpu: "50m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: todo-service
+  labels:
+    app: todo-service
+spec:
+  ports:
+    - port: 8000 #the port that this service should serve on
+      targetPort: 8000
+      protocol: TCP
+  selector:
+    app: todo-service

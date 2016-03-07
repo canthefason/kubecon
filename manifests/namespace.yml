@@ -1,0 +1,7 @@
+kind: "Namespace"
+apiVersion: "v1"
+metadata:
+  name: "${E2E_ENV}"
+  labels:
+    name: "e2e"
+    id: "${E2E_ENV}"

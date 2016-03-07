@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: selenium
+spec:
+  replicas: 1
+  selector:
+    app: selenium
+  template:
+    metadata:
+      name: selenium
+      labels:
+        app: selenium
+    spec:
+      containers:
+        - name: selenium
+          image: selenium/standalone-firefox-debug:2.48.2
+          ports:
+            - containerPort: 4444
+            - containerPort: 5900
+          imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: selenium
+  labels:
+    app: selenium
+spec:
+  ports:
+    - name: client
+      port: 4444
+      targetPort: 4444
+      protocol: TCP
+    - name: vnc
+      port: 5900
+      targetPort: 5900
+      protocol: TCP
+  selector:
+    app: selenium
