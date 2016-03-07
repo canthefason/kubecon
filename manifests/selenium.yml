@@ -12,6 +12,10 @@ spec:
       labels:
         app: selenium
     spec:
+      volumes:
+        - name: shm
+          hostPath:
+            path: /dev/shm
       containers:
         - name: selenium
           image: selenium/standalone-chrome-debug:2.52.0
@@ -19,6 +23,9 @@ spec:
             - containerPort: 4444
             - containerPort: 5900
           imagePullPolicy: Always
+          volumeMounts:
+            - name: shm
+              mountPath: /dev/shm
 ---
 apiVersion: v1
 kind: Service
