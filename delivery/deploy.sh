@@ -6,7 +6,7 @@ shopt -s expand_aliases
 source delivery/kubeargs.sh
 
 KUBE_STAGE_NAMESPACE=${KUBE_STAGE_NAMESPACE:-"stage"}
-kubeargs="$kubeargs --namespace=$KUBE_STAGE_NAMESPACE"
+kubeargs="--namespace=$KUBE_STAGE_NAMESPACE"
 
 for envvar in `printenv | cut -d" " -f 1`; do
   IFS='=' read -r -a array <<< "$envvar"
@@ -30,7 +30,7 @@ for envvar in `printenv | cut -d" " -f 1`; do
       continue
     fi
 
-    rcExist=$(kubectl get -o template rc $service --template={{.kind}}) || true
+    rcExist=$(kubectl get -o template rc $service --template={{.kind}} $kubeargs) || true
     if [ "$rcExist" != "ReplicationController" ]; then
       echo "creating $service with image: $image"
       sed -i -e "s/\${REPLICAS}/2/g" manifests/"$service".yml
